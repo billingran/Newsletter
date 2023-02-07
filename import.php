@@ -7,9 +7,8 @@ $filename = $argv[1];
 if (!file_exists($filename)) {
     echo "Erreur : fichier '$filename' introuvable";
     exit; // On arrête l'exécution du script
-} 
-
-$file = fopen($filename, "r");
+} else {
+    $file = fopen($filename, "r");
 
 
     // Construction du Data Source Name
@@ -35,11 +34,15 @@ $file = fopen($filename, "r");
 
 while ($row = fgetcsv($file)) {
 
-    $prenom = ucfirst(strtolower($row[0])); 
-    $nom = ucfirst(strtolower($row[1]));
+    $firstname = ucfirst(strtolower($row[0])); 
+    $lastname = ucfirst(strtolower($row[1]));
     $email = strtolower($row[2]);
     $email = str_replace(" ", "", $email);
 
-    $query->execute([$email, $prenom, $nom]);
+    $query->execute([$email, $firstname, $lastname]);
+
+    }
+    echo $success  = 'Information successfully saved.';
 }
+
 ?>
