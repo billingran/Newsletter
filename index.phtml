@@ -17,8 +17,8 @@
 <body>
     <header class="banner">
         <a class="banner-link" href="index.php">
-            <strong class="banner-title">Abonnez-vous à notre newsletter ! </strong>
-            <small>C'est gratuit !</small>
+            <strong class="banner-title">Subscribe to our newsletter ! </strong>
+            <small>It's free !</small>
         </a>
     </header>
     <main class="project">
@@ -28,7 +28,7 @@
                 <p class="message success"><?= $success; ?></p>
             <?php endif; ?>
             <fieldset>
-                <legend>Abonnez-vous à la newsletter !</legend>
+                <legend>Subscribe to the newsletter !</legend>
                 <div class="field-list">
                     <label for="email">Email address</label>
                     <input type="email" name="email" id="email" value="<?= $email ?>">
@@ -37,28 +37,28 @@
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="prenom">Firstname</label>
-                    <input type="text" name="prenom" id="prenom" value="<?= $prenom ?>">
-                    <?php if (isset($errors['prenom'])) : ?>
-                        <p class="message error"><?= $errors['prenom']; ?></p>
+                    <label for="firstname">Firstname</label>
+                    <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>">
+                    <?php if (isset($errors['firstname'])) : ?>
+                        <p class="message error"><?= $errors['firstname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="nom">Lastname</label>
-                    <input type="text" name="nom" id="nom" value="<?= $nom ?>">
-                    <?php if (isset($errors['nom'])) : ?>
-                        <p class="message error"><?= $errors['nom']; ?></p>
+                    <label for="lastname">Lastname</label>
+                    <input type="text" name="lastname" id="lastname" value="<?= $lastname ?>">
+                    <?php if (isset($errors['lastname'])) : ?>
+                        <p class="message error"><?= $errors['lastname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="origine">How did you discover our website?</label>
-                    <select name="origine" id="origine">
+                    <label for="original_id">How did you discover our website?</label>
+                    <select name="original_id" id="original_id">
                         <?php foreach ($origines as $origine) : ?>
                             <option value="<?= $origine['id']; ?>"><?= $origine['original_label']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <input type="submit" value="Valider" class="btn">
+                <input type="submit" value="validate" class="btn">
             </fieldset>
         </form>
     </main>
