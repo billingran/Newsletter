@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 04, 2023 at 09:11 PM
+-- Generation Time: Feb 07, 2023 at 04:53 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -32,6 +32,15 @@ CREATE TABLE `origines` (
   `original_label` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Dumping data for table `origines`
+--
+
+INSERT INTO `origines` (`id`, `original_label`) VALUES
+(1, 'I heard from a friend'),
+(2, 'Online research'),
+(3, 'Advertisement in a magazine');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +55,16 @@ CREATE TABLE `subscribers` (
   `lastname` varchar(255) NOT NULL,
   `original_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `date_time`, `email`, `firstname`, `lastname`, `original_id`) VALUES
+(1, '2023-02-07 17:52:52', 'alfred.dupont@gmail.com', 'Alfred', 'Dupont', NULL),
+(2, '2023-02-07 17:52:52', 'b.lav@hotmail.fr', 'Bertrand', 'Lavoisier', NULL),
+(3, '2023-02-07 17:52:52', 'sarahlamine@gmail.com', 'Sarah', 'Lamine', NULL),
+(4, '2023-02-07 17:52:52', 'mo78@laposte.net', 'Mohamed', 'Ben salam', NULL);
 
 --
 -- Indexes for dumped tables
@@ -72,13 +91,13 @@ ALTER TABLE `subscribers`
 -- AUTO_INCREMENT for table `origines`
 --
 ALTER TABLE `origines`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
