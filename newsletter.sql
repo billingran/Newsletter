@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 07, 2023 at 04:53 PM
+-- Generation Time: Feb 08, 2023 at 08:14 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -37,9 +37,9 @@ CREATE TABLE `origines` (
 --
 
 INSERT INTO `origines` (`id`, `original_label`) VALUES
-(1, 'I heard from a friend'),
-(2, 'Online research'),
-(3, 'Advertisement in a magazine');
+(1, 'Un ami m’en a parlé'),
+(2, 'Recherche sur internet'),
+(3, 'Publicité dans un magazine');
 
 -- --------------------------------------------------------
 
