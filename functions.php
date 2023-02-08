@@ -56,4 +56,4 @@ function addSubscriber(string $email, string $firstname, string $lastname, int $
     $query->execute([$email, $firstname, $lastname, $original_Id]);
 }
 
-//
+

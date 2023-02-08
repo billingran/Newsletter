@@ -55,3 +55,5 @@ $origins = getAllOrigins();
 
 // Inclusion du template
 include 'index.phtml';
+
+
