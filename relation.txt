@@ -10,6 +10,7 @@ dans la table "subscribers".
 
 
 
+
 Q : Est-ce qu'une origine ne peut être qu'à un seul abonné ?
 
 
