@@ -17,8 +17,8 @@
 <body>
     <header class="banner">
         <a class="banner-link" href="index.php">
-            <strong class="banner-title">Subscribe to our newsletter ! </strong>
-            <small>It's free !</small>
+            <strong class="banner-title">Abonnez-vous à notre newsletter ! </strong>
+            <small>C'est gratuit !</small>
         </a>
     </header>
     <main class="project">
@@ -28,30 +28,30 @@
                 <p class="message success"><?= $success; ?></p>
             <?php endif; ?>
             <fieldset>
-                <legend>Subscribe to the newsletter !</legend>
+                <legend>Abonnez-vous à la newsletter !</legend>
                 <div class="field-list">
-                    <label for="email">Email address</label>
+                    <label for="email">Adresse email</label>
                     <input type="email" name="email" id="email" value="<?= $email ?>">
                     <?php if (isset($errors['email'])) : ?>
                         <p class="message error"><?= $errors['email']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="firstname">Firstname</label>
+                    <label for="firstname">Prénom</label>
                     <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>">
                     <?php if (isset($errors['firstname'])) : ?>
                         <p class="message error"><?= $errors['firstname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="lastname">Lastname</label>
+                    <label for="lastname">Nom</label>
                     <input type="text" name="lastname" id="lastname" value="<?= $lastname ?>">
                     <?php if (isset($errors['lastname'])) : ?>
                         <p class="message error"><?= $errors['lastname']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="field-list">
-                    <label for="original_id">How did you discover our website?</label>
+                    <label for="original_id">Comment avez-vous connu notre site ?</label>
                     <select name="original_id" id="original_id">
                         <?php foreach ($origines as $origine) : ?>
                             <option value="<?= $origine['id']; ?>"><?= $origine['original_label']; ?></option>

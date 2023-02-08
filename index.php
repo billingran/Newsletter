@@ -24,15 +24,15 @@ if (!empty($_POST)) {
 
     // Validation 
     if (!$email) {
-        $errors['email'] = "Fill in an email address, please.";
+        $errors['email'] = "Merci d'indiquer une adresse mail";
     }
 
     if (!$firstname) {
-        $errors['firstname'] = "Fill in your firstname, please.";
+        $errors['firstname'] = "Merci d'indiquer un prénom";
     }
 
     if (!$lastname) {
-        $errors['lastname'] = "Fill in your lastname, please.";
+        $errors['lastname'] = "Merci d'indiquer un nom";
     }
 
     // Si tout est OK (pas d'erreur)
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
         addSubscriber($email, $firstname, $lastname, $original_id);
 
         // Message de succès
-        $success  = 'Thank you for subscribing';
+        $success  = 'Merci de votre inscription';
     }
 }
 
