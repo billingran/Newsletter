@@ -41,8 +41,8 @@ while ($row = fgetcsv($file)) {
 
     $query->execute([$email, $firstname, $lastname]);
 
-    }
-    echo $success  = 'Information successfully saved.';
+}
+    echo $success  = 'votre données a été inséré avec succès';
 }
 
 ?>
