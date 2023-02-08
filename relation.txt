@@ -4,6 +4,12 @@ Q : La nature de la relation entre les tables des abonnés et des origines?
 
 R : Dans la base de donnée "newsletter", la valeur d'origine de la table "subscribers" vient de la valeur étiquette d'origine de la table "origines".
 
-La cardinalité de la relation entre les tables des "subscribers" et des "origines" est Plusieurs-Un (Plusieurs abonnés de la première entité peuvent 
+La cardinalité de la relation entre les tables des "subscribers" et des "origines" est Plusieurs-Un.
 
-correspondre à la même origine de la seconde entité, mais un abonné ne peux choisir qu'une origine).
+
+
+
+Q : Est-ce qu'une origine ne peut être qu'à un seul abonné ?
+
+
+R : Non, Plusieurs abonnés de la première entité peuvent correspondre à la même origine de la seconde entité

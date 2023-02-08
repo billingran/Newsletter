@@ -51,7 +51,7 @@ if (!empty($_POST)) {
 //////////////////////////////////////////////////////
 
 // Sélection de la liste des origines
-$origines = getAllOrigins();
+$origins = getAllOrigins();
 
 // Inclusion du template
 include 'index.phtml';

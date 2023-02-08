@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 08, 2023 at 08:14 AM
+-- Generation Time: Feb 08, 2023 at 09:21 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `origines`
+-- Table structure for table `origins`
 --
 
-CREATE TABLE `origines` (
+CREATE TABLE `origins` (
   `id` int NOT NULL,
   `original_label` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Dumping data for table `origines`
+-- Dumping data for table `origins`
 --
 
-INSERT INTO `origines` (`id`, `original_label`) VALUES
+INSERT INTO `origins` (`id`, `original_label`) VALUES
 (1, 'Un ami m’en a parlé'),
 (2, 'Recherche sur internet'),
 (3, 'Publicité dans un magazine');
@@ -71,9 +71,9 @@ INSERT INTO `subscribers` (`id`, `date_time`, `email`, `firstname`, `lastname`, 
 --
 
 --
--- Indexes for table `origines`
+-- Indexes for table `origins`
 --
-ALTER TABLE `origines`
+ALTER TABLE `origins`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -88,9 +88,9 @@ ALTER TABLE `subscribers`
 --
 
 --
--- AUTO_INCREMENT for table `origines`
+-- AUTO_INCREMENT for table `origins`
 --
-ALTER TABLE `origines`
+ALTER TABLE `origins`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -107,7 +107,7 @@ ALTER TABLE `subscribers`
 -- Constraints for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  ADD CONSTRAINT `link_id` FOREIGN KEY (`original_id`) REFERENCES `origines` (`id`);
+  ADD CONSTRAINT `link_id` FOREIGN KEY (`original_id`) REFERENCES `origins` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

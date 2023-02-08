@@ -19,7 +19,7 @@ function getAllOrigins()
     $pdo->exec('SET NAMES UTF8');
 
     $sql = 'SELECT *
-            FROM origines
+            FROM origins
             ORDER BY original_label';
 
     $query = $pdo->prepare($sql);
