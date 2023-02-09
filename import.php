@@ -1,6 +1,7 @@
 <?php 
 // Inclusion des dépendances
 require 'config.php';
+require 'functions.php';
 
 $filename = $argv[1];
 

@@ -5,7 +5,6 @@
 require 'config.php';
 require 'functions.php';
 
-$errors = [];
 $success = null;
 $email = '';
 $firstname = '';
@@ -25,22 +24,12 @@ if (!empty($_POST)) {
     // On récupère l'intérêt
     $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : 0;
 
-    // Validation 
-    if (!$email) {
-        $errors['email'] = "Merci d'indiquer une adresse mail";
-    }
-
-    if (!$firstname) {
-        $errors['firstname'] = "Merci d'indiquer un prénom";
-    }
-
-    if (!$lastname) {
-        $errors['lastname'] = "Merci d'indiquer un nom";
-    }
-
-    if (!$id_of_interests) {
-        $errors['interest'] = "Merci de choisir au moins un centre d’intérêt";
-    }
+    $errors = validationForm (
+            $email,
+            $firstname,
+            $lastname,
+            $id_of_interests
+    );
 
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
@@ -62,8 +51,8 @@ if (!empty($_POST)) {
 //////////////////////////////////////////////////////
 
 // Sélection de la liste des origines
-$origins = getAllOrigins();
 $interests = getAllinterests();
+$origins = getAllOrigins();
 
 // Inclusion du template
 include 'index.phtml';
