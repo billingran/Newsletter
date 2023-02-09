@@ -11,19 +11,7 @@ if (!file_exists($filename)) {
 } else {
     $file = fopen($filename, "r");
 
-
-    // Construction du Data Source Name
-    $dsn = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
-
-    // Tableau d'options pour la connexion PDO
-    $options = [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ];
-
-    // Création de la connexion PDO (création d'un objet PDO)
-    $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
-    $pdo->exec('SET NAMES UTF8');
+    $pdo = getToDb ();
 
     // Insertion de l'email dans la table subscribers
     $sql = 'INSERT INTO subscribers
@@ -33,15 +21,20 @@ if (!file_exists($filename)) {
     $query = $pdo->prepare($sql);
 
 
-while ($row = fgetcsv($file)) {
-
+    while ($row = fgetcsv($file)) {
+        
     $firstname = ucfirst(strtolower($row[0])); 
+
     $lastname = ucfirst(strtolower($row[1]));
+
     $email = strtolower($row[2]);
     $email = str_replace(" ", "", $email);
 
-    $query->execute([$email, $firstname, $lastname]);
-
+    if (!emailExists($email)) {
+            $query->execute([$email, $firstname, $lastname]);
+        } else {
+            exit;
+        }
     }
     echo $success  = 'Vos données ont été insérées avec succès';
 }
