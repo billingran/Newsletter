@@ -58,6 +58,20 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class="field-list">
+                    <label for="interest">Centres d’intérêts</label> <br>
+
+                    <?php foreach ($interests as $interest) : ?>
+
+                    <input id="interest" type="checkbox" name="interest[]" value="<?= $interest['id']; ?>" >
+                    <label for="interest"><?= $interest['interest']; ?></label> <br>
+
+                    <?php endforeach; ?>
+                    
+                    <?php if (isset($errors['interest'])) : ?>
+                        <p class="message error"><?= $errors['interest']; ?></p>
+                    <?php endif; ?>
+                </div>
                 <input type="submit" value="validate" class="btn">
             </fieldset>
         </form>
