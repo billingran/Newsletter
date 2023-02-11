@@ -1,9 +1,10 @@
 <?php
-
-
 // Inclusion des dépendances
 require 'config.php';
 require 'functions.php';
+
+//commencer la session
+session_start();
 
 $success = null;
 $email = '';
@@ -22,7 +23,7 @@ if (!empty($_POST)) {
     $original_id = $_POST['original_id'];
 
     // On récupère l'intérêt
-    $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : 0;
+    $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : [];
 
     $errors = validationForm (
             $email,
@@ -34,15 +35,21 @@ if (!empty($_POST)) {
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
 
-        // Ajout de l'email dans le fichier csv et On récupère id d'abonné
-        $subcribers_id = addSubscriber($email, $firstname, $lastname, $original_id);
-        $subscriber_id = $subcribers_id[0]['id'];
+        if($_POST['form_token'] == $_SESSION['form_token']) {
 
-        // Ajout des centres d’intérêts et id d'abonné
-        addinterest($subscriber_id, $id_of_interests);
+            // Ajout de l'email dans le fichier csv et On récupère id d'abonné
+            $subcribers_id = addSubscriber($email, $firstname, $lastname, $original_id);
+            $subscriber_id = $subcribers_id[0]['id'];
 
-        // Message de succès
-        $success  = 'Merci de votre inscription';
+            // Ajout des centres d’intérêts et id d'abonné
+            addinterest($subscriber_id, $id_of_interests);
+
+            // Message de succès
+            $success  = 'Merci de votre inscription';
+            
+        }
+
+        $_SESSION['form_token'] = "";
     }
 }
 

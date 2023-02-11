@@ -21,7 +21,7 @@ function getToDb ()
 }
 
 /**
- * Récupère tous les enregistrements de la table origins
+ * Récupère tous les intérêts de la table "interests"
  */
 function getAllinterests()
 {
@@ -86,7 +86,7 @@ function addSubscriber(string $email, string $firstname, string $lastname, int $
 }
 
 /**
- * Ajoute un centres d’intérêts et id d'abonné
+ * Ajoute un centres d’intérêts et id de la base de données "subscribers"
  */
 function addinterest(int $subscriber_id, array $id_of_interests)
 {
@@ -108,11 +108,12 @@ function addinterest(int $subscriber_id, array $id_of_interests)
 }
 
 /**
- * Vérifie si l'email existe dans la base de données d’abonnés
+ * Vérifie si l'email existe dans la base de données "subscribers"
  */
 function emailExists(string $email): bool
 {
     $pdo = getToDb ();
+
     $sql = 'SELECT * FROM subscribers';
 
     $query = $pdo->prepare($sql);
@@ -137,14 +138,14 @@ function validationForm (
     string $firstname,
     string $lastname,
     array $id_of_interests
-) {
+):array {
 
     $errors = [];
 
     // Validation 
     if (!$email) {
         $errors['email'] = "Merci d'indiquer une adresse mail";
-    }elseif (emailExists($email)) {
+    } elseif (emailExists($email)) {
         $errors['email'] = "Un compte existe déjà avec cet email";
     }
 
@@ -161,4 +162,36 @@ function validationForm (
     }
 
     return $errors;
+}
+
+/**
+ * Insérer csv fichier dans la base de données d’abonnés
+ */
+function csvHandler ($file) 
+{ 
+    $pdo = getToDb ();
+
+    // Insertion du fichier CSV dans la table subscribers
+    $sql = 'INSERT INTO subscribers
+            (date_time, email, firstname, lastname) 
+            VALUES (Now() ,?,?,?)';
+
+    $query = $pdo->prepare($sql);
+
+    while ($row = fgetcsv($file)) {
+        
+    $firstname = ucfirst(strtolower($row[0])); 
+
+    $lastname = ucfirst(strtolower($row[1]));
+
+    $email = strtolower($row[2]);
+    $email = str_replace(" ", "", $email);
+
+    
+    if (!emailExists($email)) {
+            $query->execute([$email, $firstname, $lastname]);
+        } else {
+            exit;
+        }
+    }
 }
