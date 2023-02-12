@@ -57,8 +57,10 @@ if (!empty($_POST)) {
 // AFFICHAGE DU FORMULAIRE ///////////////////////////
 //////////////////////////////////////////////////////
 
-// Sélection de la liste des origines
+// Sélection des centres d’intérêt
 $interests = getAllinterests();
+
+// Sélection de la liste des origines
 $origins = getAllOrigins();
 
 // Inclusion du template

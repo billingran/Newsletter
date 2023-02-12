@@ -1,3 +1,5 @@
+Brief 1
+
 Q : La nature de la relation entre les tables des abonnés et des origines?
 
 
@@ -8,10 +10,27 @@ La cardinalité de la relation entre les tables des "subscribers" et des "origin
 dans la table "subscribers". 
 
 
-
-
-
 Q : Est-ce qu'une origine ne peut être qu'à un seul abonné ?
 
 
 R : Non, Plusieurs abonnés de la première entité peuvent correspondre à une origine de la seconde entité.
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Brief 2
+
+Q : La nature de la relation entre les tables des abonnés et des intérêts?
+
+
+R : 
+
+Dans la base de donnée "newsletter", la valeur des centres d’intérêt des abonnés vient de la valeur intérêt de la table "interests".
+
+Un abonné peut avoir minumun un centre d’intérêt, maximum plusieurs centres d’intérêt. (1, N)
+
+Un centre d’intérêt doit être affecté à au moins un abonné, maximum plusieurs abonnés. (1, N)
+
+La cardinalité de la relation entre les tables des "subscribers" et des "interests" est N-N. 
+
+Cette relation est affichée dans une table de liaison "subscribers_interests", maintenue en 
+utilisant des clés étrangères pour les lier.

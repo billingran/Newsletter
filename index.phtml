@@ -32,7 +32,7 @@ $_SESSION['form_token'] = $form_token;
     <main class="project">
         <form id="subscribe-form" action="index.php" method="POST">
             
-            <!-- ajouter une marque pour le formulaire -->
+            <!-- ajouter une marque correspondante à la session dans ce formulaire -->
             <input type="hidden" name="form_token" value="<?php echo $form_token; ?>" />
 
             <?php if (isset($success)) : ?>
@@ -69,6 +69,8 @@ $_SESSION['form_token'] = $form_token;
                         <?php endforeach; ?>
                     </select>
                 </div>
+                
+                <!-- ajouter de cases à cocher pour sélectionner ses centres d’intérêt -->
                 <div class="field-list">
                     <label for="interest">Centres d’intérêts</label> <br>
 

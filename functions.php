@@ -74,7 +74,7 @@ function addSubscriber(string $email, string $firstname, string $lastname, int $
 
     $query->execute([$email, $firstname, $lastname, $original_Id]);
 
-    // récupère id de l'abonné
+    // récupèrer id de l'abonné
     $subscribers_table = "SELECT *
     FROM subscribers WHERE Id=(SELECT LAST_INSERT_ID())";
 
@@ -187,11 +187,11 @@ function csvHandler ($file)
     $email = strtolower($row[2]);
     $email = str_replace(" ", "", $email);
 
-    
-    if (!emailExists($email)) {
-            $query->execute([$email, $firstname, $lastname]);
+    // Vérifier si l'email du fichier CSV existe dans la base de données "subscribers"
+    if (emailExists($email)) {
+            continue;
         } else {
-            exit;
+            $query->execute([$email, $firstname, $lastname]);
         }
     }
 }
