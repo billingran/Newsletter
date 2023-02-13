@@ -10,6 +10,7 @@ $success = null;
 $email = '';
 $firstname = '';
 $lastname = '';
+$id_of_interests = [];
 
 // Si le formulaire a été soumis...
 if (!empty($_POST)) {
@@ -24,6 +25,7 @@ if (!empty($_POST)) {
 
     // On récupère l'intérêt
     $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : [];
+    var_dump($id_of_interests);
 
     $errors = validationForm (
             $email,

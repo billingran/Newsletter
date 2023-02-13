@@ -76,9 +76,9 @@ $_SESSION['form_token'] = $form_token;
 
                     <?php foreach ($interests as $interest) : ?>
 
-                    <input id="<?= $interest['id']; ?>" type="checkbox" name="interest[]" value="<?= $interest['id']; ?>" >
+                    <input id="<?= $interest['interest']; ?>" type="checkbox" name="interest[]" value="<?= $interest['id']; ?>" <?= in_array($interest['id'], $id_of_interests) ? 'checked' : ''?>>
                     
-                    <label for="<?= $interest['id']; ?>"><?= $interest['interest']; ?></label> <br>
+                    <label for="<?= $interest['interest']; ?>"><?= $interest['interest']; ?></label> <br>
 
                     <?php endforeach; ?>
                     
