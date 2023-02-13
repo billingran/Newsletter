@@ -167,6 +167,23 @@ function validationForm (
 }
 
 /**
+ * Récupère tous les intérêts de la table "interests"
+ */
+function getAllsubscribers()
+{
+    $pdo = getToDb ();
+
+    $sql = 'SELECT *
+            FROM subscribers';
+
+    $query = $pdo->prepare($sql);
+
+    $query->execute();
+
+    return $query->fetchAll();
+}
+
+/**
  * Insérer csv fichier dans la base de données d’abonnés
  */
 function csvHandler ($file) 
@@ -180,6 +197,10 @@ function csvHandler ($file)
 
     $query = $pdo->prepare($sql);
 
+    $savedMail = 0;
+
+    $unsavedMail = 0;
+
     while ($row = fgetcsv($file)) {
         
     $firstname = ucfirst(strtolower($row[0])); 
@@ -190,10 +211,21 @@ function csvHandler ($file)
     $email = str_replace(" ", "", $email);
 
     // Vérifier si l'email du fichier CSV existe dans la base de données "subscribers"
+        
     if (emailExists($email)) {
+            $unsavedMail++;
             continue;
         } else {
+            $savedMail++;
             $query->execute([$email, $firstname, $lastname]);
         }
+    }
+
+    if ($unsavedMail > 0 && $savedMail == 0) {
+        echo "Les adresses email sont déjà présentes";
+    } elseif ($unsavedMail > 0 && $savedMail > 0) {
+        echo $success  = "Les adresses email sont déjà présentes, {$savedMail} emails ont réellement été ajoutés";
+    } elseif ($unsavedMail == 0 && $savedMail > 0) {
+        echo $success  = 'Vos données ont été insérées avec succès';
     }
 }

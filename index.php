@@ -11,6 +11,7 @@ $email = '';
 $firstname = '';
 $lastname = '';
 $id_of_interests = [];
+$test = getAllsubscribers();
 
 // Si le formulaire a été soumis...
 if (!empty($_POST)) {
@@ -25,6 +26,7 @@ if (!empty($_POST)) {
 
     // On récupère l'intérêt
     $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : [];
+
 
     if($_POST['form_token'] == $_SESSION['form_token']) {
 
@@ -41,17 +43,17 @@ if (!empty($_POST)) {
             // Ajout de l'email dans le fichier csv et On récupère id d'abonné
             $subcribers_id = addSubscriber($email, $firstname, $lastname, $original_id);
             $subscriber_id = $subcribers_id[0]['id'];
-
+            
             // Ajout des centres d’intérêts et id d'abonné
-            addinterest($subscriber_id, $id_of_interests);
-
+            addinterest($subscriber_id, $id_of_interests);  
+            
             // Message de succès
             $success  = 'Merci de votre inscription';
             
         }
 
         $_SESSION['form_token'] = "";
-        
+
     } elseif ($_POST['form_token'] != $_SESSION['form_token']) {
 
         header('Location: index.php');

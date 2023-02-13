@@ -11,7 +11,6 @@ if (!file_exists($filename)) {
 } else {
     $file = fopen($filename, "r");
     csvHandler ($file); //Insérer csv fichier dans la base de données d’abonnés
-    echo $success  = 'Vos données ont été insérées avec succès';
 }
 
 ?>
