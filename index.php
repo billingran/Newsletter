@@ -51,9 +51,12 @@ if (!empty($_POST)) {
         }
 
         $_SESSION['form_token'] = "";
+        
     } elseif ($_POST['form_token'] != $_SESSION['form_token']) {
+
         header('Location: index.php');
         exit;
+
     }
 }
 
