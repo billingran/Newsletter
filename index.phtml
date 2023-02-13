@@ -72,12 +72,13 @@ $_SESSION['form_token'] = $form_token;
                 
                 <!-- ajouter de cases à cocher pour sélectionner ses centres d’intérêt -->
                 <div class="field-list">
-                    <label for="interest">Centres d’intérêts</label> <br>
+                    <label for="">Centres d’intérêts</label> <br>
 
                     <?php foreach ($interests as $interest) : ?>
 
-                    <input id="interest" type="checkbox" name="interest[]" value="<?= $interest['id']; ?>" >
-                    <label for="interest"><?= $interest['interest']; ?></label> <br>
+                    <input id="<?= $interest['id']; ?>" type="checkbox" name="interest[]" value="<?= $interest['id']; ?>" >
+                    
+                    <label for="<?= $interest['id']; ?>"><?= $interest['interest']; ?></label> <br>
 
                     <?php endforeach; ?>
                     
