@@ -25,19 +25,18 @@ if (!empty($_POST)) {
 
     // On récupère l'intérêt
     $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : [];
-    var_dump($id_of_interests);
 
-    $errors = validationForm (
-            $email,
-            $firstname,
-            $lastname,
-            $id_of_interests
-    );
+    if($_POST['form_token'] == $_SESSION['form_token']) {
+
+        $errors = validationForm (
+                $email,
+                $firstname,
+                $lastname,
+                $id_of_interests
+        );
 
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
-
-        if($_POST['form_token'] == $_SESSION['form_token']) {
 
             // Ajout de l'email dans le fichier csv et On récupère id d'abonné
             $subcribers_id = addSubscriber($email, $firstname, $lastname, $original_id);
@@ -52,6 +51,9 @@ if (!empty($_POST)) {
         }
 
         $_SESSION['form_token'] = "";
+    } elseif ($_POST['form_token'] != $_SESSION['form_token']) {
+        header('Location: index.php');
+        exit;
     }
 }
 
