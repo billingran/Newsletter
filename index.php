@@ -11,7 +11,6 @@ $email = '';
 $firstname = '';
 $lastname = '';
 $id_of_interests = [];
-$test = getAllsubscribers();
 
 // Si le formulaire a été soumis...
 if (!empty($_POST)) {

@@ -167,23 +167,6 @@ function validationForm (
 }
 
 /**
- * Récupère tous les intérêts de la table "interests"
- */
-function getAllsubscribers()
-{
-    $pdo = getToDb ();
-
-    $sql = 'SELECT *
-            FROM subscribers';
-
-    $query = $pdo->prepare($sql);
-
-    $query->execute();
-
-    return $query->fetchAll();
-}
-
-/**
  * Insérer csv fichier dans la base de données d’abonnés
  */
 function csvHandler ($file) 
