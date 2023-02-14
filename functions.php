@@ -207,8 +207,8 @@ function csvHandler ($file)
     if ($unsavedMail > 0 && $savedMail == 0) {
         echo "Les adresses email sont déjà présentes";
     } elseif ($unsavedMail > 0 && $savedMail > 0) {
-        echo $success  = "Les adresses email sont déjà présentes, {$savedMail} emails ont réellement été ajoutés";
+        echo "Les adresses email sont déjà présentes, {$savedMail} emails ont réellement été ajoutés";
     } elseif ($unsavedMail == 0 && $savedMail > 0) {
-        echo $success  = 'Vos données ont été insérées avec succès';
+        echo 'Vos données ont été insérées avec succès';
     }
 }
