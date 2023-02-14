@@ -1,10 +1,10 @@
 <?php
+//commencer la session
+session_start();
+
 // Inclusion des dépendances
 require 'config.php';
 require 'functions.php';
-
-//commencer la session
-session_start();
 
 $success = null;
 $email = '';
@@ -26,39 +26,38 @@ if (!empty($_POST)) {
     // On récupère l'intérêt
     $id_of_interests = isset($_POST['interest']) ? $_POST['interest'] : [];
 
-
-    if($_POST['form_token'] == $_SESSION['form_token']) {
-
-        $errors = validationForm (
-                $email,
-                $firstname,
-                $lastname,
-                $id_of_interests
-        );
-
+    $errors = validationForm (
+        $email,
+        $firstname,
+        $lastname,
+        $id_of_interests
+    );
+    
     // Si tout est OK (pas d'erreur)
     if (empty($errors)) {
+        
+        if($_POST['form_token'] == $_SESSION['form_token']) {
 
             // Ajout de l'email dans le fichier csv et On récupère id d'abonné
             $subcribers_id = addSubscriber($email, $firstname, $lastname, $original_id);
             $subscriber_id = $subcribers_id[0]['id'];
             
             // Ajout des centres d’intérêts et id d'abonné
-            addinterest($subscriber_id, $id_of_interests);  
-            
-            // Message de succès
-            $success  = 'Merci de votre inscription';
-            
+            addinterest($subscriber_id, $id_of_interests);
+
+            // Ajout d'un message flash en session
+            $_SESSION['successMessage'] = 'Merci de votre inscription.';
+
+            // Redirection vers l'index.php mais sans les données du formulaire
+            header('Location: index.php');
+            exit;
         }
 
-        $_SESSION['form_token'] = "";
-
-    } elseif ($_POST['form_token'] != $_SESSION['form_token']) {
+        unset($_SESSION['form_token']);
 
         header('Location: index.php');
         exit;
-
-    }
+    } 
 }
 
 //////////////////////////////////////////////////////
@@ -70,6 +69,15 @@ $interests = getAllinterests();
 
 // Sélection de la liste des origines
 $origins = getAllOrigins();
+
+if (array_key_exists('successMessage', $_SESSION) && $_SESSION['successMessage']) {
+    
+    // récupèrer le message success dans une variable 
+    $success = $_SESSION['successMessage'];
+
+    // effacer de la session
+    $_SESSION['successMessage'] = null;
+}
 
 // Inclusion du template
 include 'index.phtml';
