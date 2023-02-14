@@ -194,7 +194,6 @@ function csvHandler ($file)
     $email = str_replace(" ", "", $email);
 
     // Vérifier si l'email du fichier CSV existe dans la base de données "subscribers"
-        
     if (emailExists($email)) {
             $unsavedMail++;
             continue;

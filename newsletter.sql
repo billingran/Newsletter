@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 12, 2023 at 06:54 PM
+-- Generation Time: Feb 14, 2023 at 11:14 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -85,11 +85,11 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`id`, `date_time`, `email`, `firstname`, `lastname`, `original_id`) VALUES
-(1, '2023-02-12 19:53:28', 'alfred.dupont@gmail.com', 'Alfred', 'Dupont', NULL),
-(2, '2023-02-12 19:53:28', 'b.lav@hotmail.fr', 'Bertrand', 'Lavoisier', NULL),
-(3, '2023-02-12 19:53:28', 'sarahlamine@gmail.com', 'Sarah', 'Lamine', NULL),
-(4, '2023-02-12 19:53:28', 'mo78@laposte.net', 'Mohamed', 'Ben salam', NULL),
-(5, '2023-02-12 19:54:04', 'billingran@gmail.com', 'teng-wei', 'Huang', 2);
+(1, '2023-02-14 12:05:26', 'alfred.dupont@gmail.com', 'Alfred', 'Dupont', NULL),
+(2, '2023-02-14 12:05:26', 'b.lav@hotmail.fr', 'Bertrand', 'Lavoisier', NULL),
+(3, '2023-02-14 12:05:26', 'sarahlamine@gmail.com', 'Sarah', 'Lamine', NULL),
+(4, '2023-02-14 12:05:26', 'mo78@laposte.net', 'Mohamed', 'Ben salam', NULL),
+(5, '2023-02-14 12:13:19', 'billingran@gmail.com', 'teng-wei', 'Huang', 2);
 
 -- --------------------------------------------------------
 
@@ -108,8 +108,8 @@ CREATE TABLE `subscribers_interests` (
 
 INSERT INTO `subscribers_interests` (`subscribers_id`, `interests_id`) VALUES
 (5, 4),
-(5, 6),
-(5, 5);
+(5, 5),
+(5, 3);
 
 --
 -- Indexes for dumped tables
@@ -132,6 +132,7 @@ ALTER TABLE `origins`
 --
 ALTER TABLE `subscribers`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `link_original_id` (`original_id`) USING BTREE;
 
 --
